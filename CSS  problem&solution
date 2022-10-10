@@ -1,0 +1,44 @@
+CSS doesn't work after I deployed ToDoList in Heroku, the solution was updated in 2022!
+
+Solution:
+
+1. Make sure that inside your project folder (in our case todolist-v2  folder) you have:
+
+   public folder ->  CSS folder -> styles.css file
+
+2. Make sure that the inside header.ejs file you have:
+
+  <link href="/CSS/styles.css" rel="stylesheet" type="text/css" >
+
+3. Make sure that inside app.js you have:
+
+  app.use(express.static(__dirname + '/public'));
+
+4. Go to HyperTerminal:
+
+cd locationofProjectFolder
+
+nodemon app.js
+
+Ctrl+C
+
+git add .
+
+git commit -m "the problem is solved"
+
+git push heroku master
+
+5. Go to https://NameOfYourApp.herokuapp.com/
+
+*See more about this problem here:
+
+https://stackoverflow.com/questions/48248832/stylesheet-not-loaded-because-of-mime-type?answertab=scoredesc#tab-top
+
+*See the solution applied here:
+
+https://github.com/robertodatja/Project1__MongoDB-Atlas-Heroku
+
+
+*Se more for this course here:
+
+https://github.com/robertodatja
