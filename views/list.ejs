@@ -1,0 +1,34 @@
+<%- include("header"); -%>
+
+ <div class="box" id="heading">
+  <h1> <%= listTitle %> </h1>
+  <!--kindOfDay -->
+ </div>
+
+ <div class="box">
+
+  <% newListItems.forEach(function(item){ %>   <!--12)-->
+
+  <!-- If you take a look inside our list.ejs at the moment the way that we're implementing the delete functionality
+  is through the use of this form. And this form makes a post request to the /delete route
+  and it passes over the item id that the user wanted to delete and the form gets triggered when one of the checkboxes gets clicked. -->
+  <form action="/delete" method="post">  <!--Deleting checked items--> <!--16)-->
+   <!-- STEP V -->
+   <div class="item">
+    <input type="checkbox" name="checkBOX" value="<%=item._id %>" onChange="this.form.submit()"> <!--16)-->
+    <p> <%= item.name %> </p> <!--11)-->
+   </div>
+   <% }); %>
+   <input type="hidden" name="listNAME" value="<%=listTitle %>">  <!--20.1)-->
+  </form>
+
+
+
+
+  <form class="item" action="/" method="post">    <!--Adding new items-->
+   <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+   <button class="btn btn-lg" type="submit" name="list" value=<%=listTitle%>> + </button>  <!--18)-->
+  </form>
+ </div>
+
+<%- include("footer"); -%>
